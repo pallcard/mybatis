@@ -11,8 +11,5 @@
       select * from tb_user where id = #{id};
    </select>
 
-    <insert id="insertUser" parameterType="cn.wishhust.mybatis.first.User">
-
-    </insert>
 
 </mapper>
