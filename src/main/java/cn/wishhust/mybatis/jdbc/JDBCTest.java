@@ -1,4 +1,4 @@
-package cn.wishhust.mybatis;
+package cn.wishhust.mybatis.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
