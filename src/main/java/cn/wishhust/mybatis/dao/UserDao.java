@@ -6,6 +6,7 @@ import cn.wishhust.mybatis.pojo.User;
 
 import java.util.List;
 
+// 按住Alt+Enter,选择create test
 public interface UserDao {
     /**
      * 根据id查询用户信息

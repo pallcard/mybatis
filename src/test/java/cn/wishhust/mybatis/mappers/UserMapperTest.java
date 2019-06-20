@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
 
 public class UserMapperTest {
 
-    public UserMapper userMapper;
+    private UserMapper userMapper;
 
     @Before
     public void setUp() throws Exception {

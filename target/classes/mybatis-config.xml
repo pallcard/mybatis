@@ -4,12 +4,34 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <!-- 根标签 -->
 <configuration>
+    <!--properties配置的属性都是可外部配置且可动态替换的，既可以在典型的 Java 属性文件中配置，亦可通过 properties 元素的子元素来传递。-->
     <properties>
         <property name="driver" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://127.0.0.1:3306/mybatis_demo?useUnicode=true&amp;characterEncoding=utf-8&amp;allowMultiQueries=true"/>
         <property name="username" value="root"/>
         <property name="password" value=""/>
     </properties>
+    <!--开启驼峰匹配-->
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+    <!--类型别名是为 Java 类型命名的一个短的名字。它只和 XML 配置有关，存在的意义仅在于用来减少类完全限定名的冗余。-->
+    <typeAliases>
+        <!--<typeAlias type="cn.wishhust.mybatis.pojo.User" alias="User"/>-->
+        <!--使用扫描包，扫描指定包下的所有类，扫描之后的别名就是类名（不区分大小写），建议使用的时候和类名一致。-->
+        <package name="cn.wishhust.mybatis.pojo"/>
+    </typeAliases>
+    <!--无论是 MyBatis 在预处理语句（PreparedStatement）中设置一个参数时，还是从结果集中取出一个值时， 都会用类型处理器将获取的值以合适的方式转换成 Java 类型。
+    可以重写类型处理器或创建你自己的类型处理器来处理不支持的或非标准的类型。-->
+    <typeHandlers></typeHandlers>
+
+    <!-- 拦截器 -->
+    <!--<plugins>-->
+        <!--<plugin interceptor="org.mybatis.example.ExamplePlugin">-->
+            <!--<property name="someProperty" value="100"/>-->
+        <!--</plugin>-->
+    <!--</plugins>-->
+
 
     <!-- 环境，可以配置多个，default：指定采用哪个环境 -->
     <environments default="test">
@@ -41,5 +63,6 @@
         <mapper resource="mappers/UserMapper.xml" />
         <mapper resource="mappers/UserDaoMapper.xml" />
         <mapper resource="mappers/UserMapper2.xml" />
+        <mapper resource="mappers/OrderMapper.xml" />
     </mappers>
 </configuration>
