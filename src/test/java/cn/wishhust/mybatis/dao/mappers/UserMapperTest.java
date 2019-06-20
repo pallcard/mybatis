@@ -1,4 +1,4 @@
-package cn.wishhust.mybatis.mappers;
+package cn.wishhust.mybatis.dao.mappers;
 
 import cn.wishhust.mybatis.pojo.User;
 import org.apache.ibatis.io.Resources;
@@ -11,8 +11,6 @@ import org.junit.Test;
 import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 public class UserMapperTest {
 

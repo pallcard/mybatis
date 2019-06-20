@@ -3,19 +3,24 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- mappers:根标签，namespace：命名空间，随便写，一般保证命名空间唯一 -->
-<mapper namespace="cn.wishhust.mybatis.mappers.OrderMapper">
-    <resultMap id="OrderUserResultMap" type="cn.wishhust.mybatis.pojo.Order" autoMapping="true">
+<mapper namespace="cn.wishhust.mybatis.dao.mappers.OrderMapper">
+    <resultMap id="OrderUserResultMap"
+               type="cn.wishhust.mybatis.pojo.Order"
+               autoMapping="true">
         <id column="id" property="id"/>
         <!--association:完成子对象的映射-->
         <!--property:子对象在父对象中的属性名-->
         <!--javaType:子对象的java类型-->
         <!--autoMapping:完成子对象的自动映射，若开启驼峰，则按驼峰匹配-->
-        <association property="user" javaType="cn.wishhust.mybatis.pojo.User" autoMapping="true">
+        <association property="user"
+                     javaType="cn.wishhust.mybatis.pojo.User"
+                     autoMapping="true">
             <id column="user_id" property="id"/>
         </association>
     </resultMap>
 
-    <select id="queryOrderWithUserByOrderNumber" resultMap="OrderUserResultMap">
+    <select id="queryOrderWithUserByOrderNumber"
+            resultMap="OrderUserResultMap">
       select * from tb_order o left join tb_user u
         on o.user_id=u.id
         where o.order_number = #{number}

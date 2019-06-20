@@ -1,4 +1,4 @@
-package cn.wishhust.mybatis.mappers;
+package cn.wishhust.mybatis.dao.mappers;
 
 import cn.wishhust.mybatis.pojo.Order;
 import org.apache.ibatis.io.Resources;
@@ -9,8 +9,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.InputStream;
-
-import static org.junit.Assert.*;
 
 public class OrderMapperTest {
 

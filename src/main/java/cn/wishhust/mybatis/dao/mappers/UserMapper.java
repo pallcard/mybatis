@@ -1,4 +1,4 @@
-package cn.wishhust.mybatis.mappers;
+package cn.wishhust.mybatis.dao.mappers;
 
 import cn.wishhust.mybatis.pojo.User;
 import org.apache.ibatis.annotations.Param;
