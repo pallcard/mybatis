@@ -7,6 +7,11 @@
     <resultMap id="OrderUserResultMap"
                type="cn.wishhust.mybatis.pojo.Order"
                autoMapping="true">
+        <!--
+            指定主键
+            column：数据库的列名
+            property：java实体类中的属性名
+        -->
         <id column="id" property="id"/>
         <!--association:完成子对象的映射-->
         <!--property:子对象在父对象中的属性名-->

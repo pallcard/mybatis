@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mappers:根标签，namespace：命名空间，随便写，一般保证命名空间唯一 -->
+<mapper namespace="cn.wishhust.mybatis.dao.mappers.DynamicSqlMapper">
+
+    <!--if的简单使用-->
+    <select id="queryUserListByName"
+            resultType="cn.wishhust.mybatis.pojo.User">
+      select * from tb_user
+      <if test="userName!=null and userName.trim() !=''">
+          where user_name like '%${userName}%'
+      </if>
+    </select>
+
+    <!--choose when otherwise的简单使用-->
+    <select id="queryUserListByNameOrAge"
+            resultType="cn.wishhust.mybatis.pojo.User">
+        select * from tb_user WHERE
+        <!--
+        1.一旦有条件成立的when，后续的when则不会执行
+        2.当所有的when都不执行时,才会执行otherwise
+        -->
+        <choose>
+            <when test="userName!=null and userName.trim()!=''">
+                user_name like '%${userName}%'
+            </when>
+            <when test="age!=null">
+                age = #{age}
+            </when>
+            <otherwise>
+                user_name = 'ls'
+            </otherwise>
+        </choose>
+    </select>
+
+    <!--where 和set的简单使用-->
+    <select id="queryUserListByNameAndAge" resultType="cn.wishhust.mybatis.pojo.User">
+        select * from tb_user
+        <!--如果多出一个and，会自动去除，如果缺少and或者多出多个and则会报错-->
+        <where>
+            <if test="userName!=null and userName.trim()!=''">
+                and name like '%${userName}%'
+            </if>
+            <if test="age!=null">
+                and age = #{age}
+            </if>
+        </where>
+    </select>
+    <update id="updateUser" parameterType="cn.wishhust.mybatis.pojo.User">
+        UPDATE tb_user
+        <trim prefix="set" suffixOverrides=",">
+            <if test="userName!=null">user_name = #{userName},</if>
+            <if test="password!=null">password = #{password},</if>
+            <if test="name!=null">name = #{name},</if>
+            <if test="age!=null">age = #{age},</if>
+            <if test="sex!=null">sex = #{sex},</if>
+            <if test="birthday!=null">birthday = #{birthday},</if>
+            updated = now(),
+        </trim>
+        WHERE
+        (id = #{id});
+    </update>
+
+    <!--foreach的简单使用-->
+    <select id="queryUserListByIds" resultType="cn.wishhust.mybatis.pojo.User">
+        select * from tb_user where id in
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </select>
+
+</mapper>
