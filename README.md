@@ -63,5 +63,5 @@ INSERT INTO tb_item
 INSERT INTO tb_orderdetail 
     VALUES ('1', '1', '10000', '1', '0000000001');
 INSERT INTO tb_orderdetail 
-    VALUES ('2', '1', '2000', '2', '0000000000');
+    VALUES ('2', '2', '2000', '2', '0000000000');
 ```

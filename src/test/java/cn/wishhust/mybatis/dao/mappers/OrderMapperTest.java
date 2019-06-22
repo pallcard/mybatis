@@ -38,4 +38,5 @@ public class OrderMapperTest {
         Order order = orderMapper.queryOrderWithUserByOrderNumber("201807010001");
         System.out.println(order.getUser());
     }
+
 }

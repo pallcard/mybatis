@@ -2,6 +2,7 @@ package cn.wishhust.mybatis.pojo;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class User {
     private int id;
@@ -13,6 +14,21 @@ public class User {
     private Date birthday;
     private String created;
     private String updated;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", sex=" + sex +
+                ", birthday=" + birthday +
+                ", created='" + created + '\'' +
+                ", updated='" + updated + '\'' +
+                '}';
+    }
 
     public int getId() {
         return id;
@@ -86,18 +102,4 @@ public class User {
         this.updated = updated;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", sex=" + sex +
-                ", birthday=" + new SimpleDateFormat("yyyy-MM-dd").format(birthday) +
-                ", created='" + created + '\'' +
-                ", updated='" + updated + '\'' +
-                '}';
-    }
 }

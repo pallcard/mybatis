@@ -9,7 +9,7 @@
     <select id="queryUserListByName"
             resultType="cn.wishhust.mybatis.pojo.User">
       select * from tb_user
-      <if test="userName!=null and userName.trim() !=''">
+      <if test="userName != null and userName.trim() != ''">
           where user_name like '%${userName}%'
       </if>
     </select>

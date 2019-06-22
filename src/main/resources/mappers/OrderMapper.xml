@@ -31,6 +31,4 @@
         where o.order_number = #{number}
     </select>
 
-
-
 </mapper>
